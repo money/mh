@@ -1,0 +1,112 @@
+.row.billboard.services-fees-billboard-image
+  .col.align-self-center.text-center.bg-white.col-md-4.offset-md-4
+    .tagline.font-weight-normal Ongoing Individual Counseling
+    .tagline.font-weight-bolder $100 - $150 / session
+    p.lead A web-based psychotherapy company
+
+.row.mb-4
+  .col-8.offset-2.mt-5
+    .card-deck
+      .card.border-0.bg-transparent
+        #individual-session
+          = link_to '#individual-session', class: 'text-dark',
+                         data: { toggle: 'collapse', target: '#individual' },
+                         aria: { expanded: false, controls: 'individual'} do
+            = image_tag 'individual-session-image.png', class: 'card-img-top rounded-0'
+            .align-self-center.col.text-center
+              p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal INDIVIDUAL
+
+      .card.border-0.bg-transparent
+        #relationship-session
+          = link_to '#relationship-session', class: 'text-dark',
+                        data: { toggle: 'collapse', target: '#relationship' },
+                        aria: { expanded: false, controls: 'relationship'}  do
+            = image_tag 'relationship-session-image.png', class: 'card-img-top rounded-0'
+            .align-self-center.col.text-center
+              p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal RELATIONSHIP
+
+      .card.border-0.bg-transparent
+        #domestic-session
+          = link_to '#domestic', class: 'text-dark',
+                        data: { toggle: 'collapse', target: '#domestic' },
+                        aria: { expanded: false, controls: 'domestic'} do
+            = image_tag 'domestic-session-image.png', class: 'card-img-top rounded-0'
+            .align-self-center.col.text-center
+              p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal DOMESTIC
+
+.row.section-1
+  .col-8.offset-2
+
+    #individual.collapse aria-labelledby="individual-session" data-parent=".section-1"
+      .card-body
+        .text-center.h2.font-weight-normal Individual
+        p.h5.font-weight-light Depression, anxiety, and other mental health concerns can look differently for each individual.
+        p.h5.font-weight-light Individual counseling is geared toward exploring triggers to the problem and getting to the root of the issue. This can be a time limited treatment or ongoing depending on the needs and type of concern.
+
+    #relationship.collapse aria-labelledby="relationship-session" data-parent=".section-1"
+      .card-body
+        .text-center.h2.font-weight-normal Relationship
+        p.h5.font-weight-light Relationships only survive if two people are committed to progressive communication strategies. We offer one on one sessions for anyone who wants to explore their role within the relationship. We can also coordinate couples sessions to teach positive communication and understanding between two individuals.We cannot guarantee that all relationships will survive, but we will help the couple establish goals and keep the relationship on the track that you choose. We also offer support for individuals and couples who identify as LGBTQ and struggle to express themselves
+
+    #domestic.collapse aria-labelledby="domestic-session" data-parent=".section-1"
+      .card-body
+        .text-center.h2.font-weight-normal Domestic
+        p.h5.font-weight-light Intimate partner violence is difficult.
+        p.h5.font-weight-light It is even more difficult to accept that the person who we love made us a victim of abuse.
+        p.h5.font-weight-light During sessions, we can provide education on the patterns of intimate partner violence, develop a safety plan, and refer victims to safe homes where no one will harm them. Additionally, we also offer counseling to alleged perpetrators of domestic violence to help them change their behavior and learn how their actions impact their closest relationships.
+
+.row.height-25.bg-light
+  .col-md-6.offset-md-3.col-sm-12.m-auto
+    .card-deck
+      .card.border-0.bg-transparent
+        .card-body
+          .text-center.h2.font-weight-normal SERVICES
+          p.h5.font-weight-light.col-10.offset-1 Cognitive behavioral therapy to those dealing with domestic violence, mental illness, homelessness, substance abuse, and grief counseling.
+
+.row#section-2.mt-5
+  .col-8.offset-2
+
+    #cbt.collapse aria-labelledby="cbt-session" data-parent="#section-2"
+      .card-body
+        .text-center.h2.font-weight-normal Cognitive Behavioral Therapy
+        p.h5.font-weight-light Cognitive Behavioral Therapy (CBT) is a short-term treatment type in which we help you identify maladaptive thoughts and unhealthy behavior patterns. The goal is to develop positive coping skills and the ability to problem solve through difficult life situations. This type of treatment is beneficial for those afflicted with Depression, Anxiety, Eating Disorders, Post Traumatic Stress Disorder, and other related issues.
+
+    #prenatal.collapse aria-labelledby="prenatal-session" data-parent="#section-2"
+      .card-body
+        .text-center.h2.font-weight-normal Prenatal, Miscarriage, and Post Partum
+        p.h5.font-weight-light More than 3 million women suffer from Post-Partum depression every year. Parents who experience a miscarriage and those preparing for birth of a child can have the same type of depression.
+        p.h5.font-weight-light The good news is that postpartum depression is the most treatable type of depression. The right therapist can help you take control of your symptoms so that you can move on to enjoy the beauty of life.
+
+    #parenting.collapse aria-labelledby="parenting-session" data-parent="#section-2"
+      .card-body
+        .text-center.h2.font-weight-normal Parenting
+        p.h5.font-weight-light We can also coordinate couples sessions to teach positive communication and understanding between two individuals.
+        p.h5.font-weight-light We cannot guarantee that all relationships will survive, but we will help the couple establish goals and keep the relationship on the track that you choose.
+
+
+.row.mb-5
+  .col-8.offset-2.mt-3
+    .card-deck
+      .card.border-0.bg-transparent
+        = link_to '#cbt', class: 'text-dark',
+                      data: { toggle: 'collapse', target: '#cbt' },
+                      aria: { expanded: false, controls: 'cbt'} do
+          = image_tag 'cbt-session-image.png', class: 'card-img-top rounded-0'
+          .align-self-center.col.text-center.position-absolute.fixed-top
+            p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal CBT
+      .card.border-0.bg-transparent
+        #prenatal-session
+          = link_to '#prenatal', class: 'text-dark',
+                        data: { toggle: 'collapse', target: '#prenatal' },
+                        aria: { expanded: false, controls: 'prenatal'} do
+            = image_tag 'prenatal-session-image.png', class: 'card-img-top rounded-0'
+            .align-self-center.col.text-center.position-absolute.fixed-top
+              p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal PRENATAL
+      .card.border-0.bg-transparent
+        #parenting-session
+          = link_to '#parenting', class: 'text-dark',
+                        data: { toggle: 'collapse', target: '#parenting' },
+                        aria: { expanded: false, controls: 'parenting'} do
+            = image_tag 'parenting-session-image.png', class: 'card-img-top rounded-0'
+            .align-self-center.col.text-center.position-absolute.fixed-top
+              p.mr-auto.ml-auto.lead.w-75.bg-white.font-weight-normal PARENTING

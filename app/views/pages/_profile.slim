@@ -1,0 +1,36 @@
+.card.bg-dark.text-white.border-0
+  = billboard_image
+  .card-img-overlay.mt-5
+    .col-sm-4.offset-sm-4.col-xs-8.offset-xs-2.mt-5.bg-white
+      - @page.content
+        h1.card-title.p-3.text-dark= @page.content
+
+.row
+  .col-md-4.col-xs-12
+    = profile_image
+
+    .mt-5
+      .display-4.text-center.font-weight-lighter Ajita
+      .display-4.text-center.font-weight-lighter Gupta
+    .mt-5
+      p.text-center.font-weight-normal.lead License: LCSW 79759
+    .mt-5.col
+      h3.text-center.font-weight-light EDUCATION
+      table.table.table-borderless
+        tbody
+          tr
+            td.text-nowrap 2006 - 2008
+            td
+              p Masters in Social Welfare: Child Welfare and Mental Health
+              p University of California, Los Angeles
+          tr
+            td 2001 - 2005
+            td
+              p Bachelors in Psychology and South Asian Studies
+              p University of California, Los Angeles
+
+  .col-md-8.col-xs-12
+    - @page.sections.each do |section|
+      .col-10.mt-3.h5.font-weight-light.therapist-bio
+        h3.font-weight-light= section.title
+        p= html_content(section.content)

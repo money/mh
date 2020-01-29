@@ -1,0 +1,90 @@
+doctype html
+html
+  head
+    title
+      | MyndHeal
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    script crossorigin="anonymous" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+
+
+  body class="container-fluid #{@page.try(:slug)}"
+    .row
+      div.col-6
+        = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
+          = image_tag "facebook-logo.png", class: 'p-2'
+        = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
+          = image_tag "instagram-logo.png", class: 'p-2'
+        = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
+          = image_tag "twitter-logo.png", class: 'p-2'
+      div.col-6.text-right.pt-2
+        = link_to 'New Client', '#', class: 'btn btn-secondary mr-2'
+        = link_to 'Portal login', '#', class: 'btn btn-secondary'
+    .row.position-relative.myndheal-logo
+      .col.text-center
+        = link_to_unless current_page?(root_path),
+          image_tag('myndheal-logo-circle.png',
+          class: 'position-absolute myndheal-logo-circle'), root_path
+        = image_tag 'myndheal-logo-name.png', class: 'mt-5 pt-4 ml-4'
+    .col.text-center
+      p.lead A Web Based Psychotherapy Company - Making Mental Health a Priority.
+
+    .col-12
+      = render partial: 'shared/notification'
+    .row
+      .col.align-items-start.mb-1
+        ul.list-group.list-group-horizontal
+          li.list-group-item
+            = link_to 'Learn Markdown',
+              'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
+              target: '_blank',
+              class: 'text-info'
+      .align-items-end.mr-3.mb-1
+        ul.list-group.list-group-horizontal
+          li.list-group-item= link_to 'add page', [:new, :page]
+          = yield :controls
+    - unless current_page?(root_path)
+      nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom.row
+        button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.nav-fill.w-100
+            - @navigable_pages.each do |page|
+              li.nav-item
+                = link_to page.title, page.slug, class: 'nav-link'
+
+    = yield
+
+    footer.bg-light.text-center.mt-4
+      .row.row-cols-1.row-cols-md-3
+        .col.mb-4
+          .card.border-0.bg-transparent
+            .card-body
+              h5.card-title Quick References
+              ul.list-unstyled
+                li= link_to 'FAQ', '/faq', class: 'text-dark'
+                li= link_to 'Technical Requirements', '#', class: 'text-dark'
+        .col.mb-4
+          .card.border-0.bg-transparent
+            .card-body
+              h5.card-title Mobile App
+              = link_to 'https://apps.apple.com/us/app/telehealth-by-simplepractice/id1351373906#?platform=iphone', class: 'p-3', target: '_blank' do
+                = image_tag 'apple-logo.png', width: '50'
+              = link_to 'https://play.google.com/store/apps/details?id=com.simplepractice.video', class: 'p-3', target: '_blank' do
+                = image_tag 'android-logo.png', width: '50'
+        .col.mb-4
+          .card.border-0.bg-transparent
+            .card-body
+              h5.card-title MyndHeal
+              ul.list-unstyled
+                li (916) 400-0633
+                li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
+                li.pt-2
+                  span.mr-3
+                    = image_tag 'hipaa-logo.png', width: '80 p-2'
+                  span
+                    = image_tag 'ssl-logo.png', width: '80 p-2'
