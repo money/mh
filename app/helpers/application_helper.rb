@@ -12,7 +12,7 @@ module ApplicationHelper
     if @page.image.try(:present?)
       image_tag @page.image, class: 'd-block w-100', height: '400px'
     else
-      image_tag 'our-story-image.jpeg', class: 'd-block w-100', height: '400px'
+      image_tag 'billboard-placeholder.png', class: 'd-block w-100', height: '400px'
     end
   end
 
