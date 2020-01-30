@@ -10,6 +10,7 @@ html
     script crossorigin="anonymous" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    / script src="https://widget-cdn.simplepractice.com/assets/integration-1.0.js"
 
 
   body class="container-fluid #{@page.try(:slug)}"
@@ -22,8 +23,9 @@ html
         = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
           = image_tag "twitter-logo.png", class: 'p-2'
       div.col-6.text-right.pt-2
-        = link_to 'New Client', '#', class: 'btn btn-secondary mr-2'
-        = link_to 'Portal login', '#', class: 'btn btn-secondary'
+        = link_to 'New Client', '/new_client', class: 'btn btn-secondary mr-2'
+        = link_to 'Portal login', 'https://myndheal.clientsecure.me',
+          class: 'btn btn-secondary', target: '_blank'
     .row.position-relative.myndheal-logo
       .col.text-center
         = link_to_unless current_page?(root_path),
@@ -56,6 +58,15 @@ html
             - @navigable_pages.each do |page|
               li.nav-item
                 = link_to page.title, page.slug, class: 'nav-link'
+            li.nav-item
+              = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
+                class: 'text-success',
+                data: { spwidget_scope_id: 'd1857250-eabf-4ffd-af2b-3988e1390094',
+                        spwidget_scope_uri: 'myndheal',
+                        spwidget_application_id: '7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b',
+                        spwidget_scope_global: '',
+                        spwidget_autobind: '' }
+              = javascript_include_tag "https://widget-cdn.simplepractice.com/assets/integration-1.0.js", cached: true
 
     = yield
 

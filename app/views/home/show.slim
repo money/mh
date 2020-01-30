@@ -1,2 +1,2 @@
-- if @page
+- cache_if @page.present?, @page do
   = render partial: "pages/#{@page.layout}"
