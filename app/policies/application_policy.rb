@@ -2,23 +2,23 @@
 
 # application policy
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :account, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(account, record)
+    @account = account
     @record = record
   end
 
   def index?
-    false
+    admin?
   end
 
   def show?
-    false
+    admin?
   end
 
   def create?
-    false
+    admin?
   end
 
   def new?
@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    admin?
   end
 
   def edit?
@@ -34,15 +34,21 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    admin?
+  end
+
+  def admin?
+    Role.joins(:accounts)
+        .admin.find_by(accounts: { id: @account.id })
+        .admin?
   end
 
   # scope
   class Scope
-    attr_reader :user, :scope
+    attr_reader :account, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(account, scope)
+      @account = account
       @scope = scope
     end
 

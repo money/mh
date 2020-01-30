@@ -7,11 +7,11 @@ class SectionsController < ApplicationController
   before_action :find_section, only: %i[edit update]
 
   def new
-    @section = Section.new(page: @page)
+    @section = authorize Section.new(page: @page)
   end
 
   def create
-    @section = Section.new(page: @page)
+    @section = authorize Section.new(page: @page)
     @section.assign_attributes(section_params)
     if @section.save
       redirect_to @page
@@ -44,10 +44,10 @@ class SectionsController < ApplicationController
   end
 
   def find_page
-    @page = Page.find_by(slug: params[:page_slug])
+    @page = authorize Page.find_by(slug: params[:page_slug])
   end
 
   def find_section
-    @section = Section.find(params[:id])
+    @section = authorize Section.find(params[:id])
   end
 end

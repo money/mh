@@ -6,6 +6,6 @@ class HomeController < ApplicationController
   before_action :navigable_pages
 
   def show
-    @page = Page.find_by(slug: 'home')
+    @page = Page.find_by(slug: 'home', type: nil)
   end
 end

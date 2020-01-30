@@ -17,8 +17,9 @@ class Page < ApplicationRecord
                                           foreign_key: :parent_id
 
   # validations
-  validates :title, presence: true,
-                    uniqueness: { scope: :type }, if: :page_class?
+  with_options if: :page_class? do |page|
+    page.validates :title, presence: true, uniqueness: true
+  end
   with_options if: :navigable? do |navigable|
     navigable.validates :position, presence: true,
                                    uniqueness: { scope: :aasm_state }
@@ -53,10 +54,10 @@ class Page < ApplicationRecord
   end
 
   def set_slug
-    self.slug = title.parameterize(separator: '_') if self.class == Page
+    self.slug = title.parameterize(separator: '_') if page_class?
   end
 
   def page_class?
-    self.class == Page
+    type.nil?
   end
 end

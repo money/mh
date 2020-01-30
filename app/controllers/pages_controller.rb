@@ -6,15 +6,15 @@ class PagesController < ApplicationController
   before_action :find_page, only: %i[edit update show destroy]
 
   def index
-    @pages = Page.where(type: nil).all
+    @pages = policy_scope(Page)
   end
 
   def new
-    @page = Page.new
+    @page = authorize Page.new
   end
 
   def create
-    @page = Page.new(page_params)
+    @page = authorize Page.new(page_params)
     if @page.save
       redirect_to :pages
     else
@@ -35,6 +35,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def destroy
+    @page.destroy
+    redirect_to :pages
+  end
+
   private
 
   def page_params
@@ -45,7 +50,7 @@ class PagesController < ApplicationController
   end
 
   def find_page
-    @page = Page.includes(sections: :cards)
+    @page = authorize Page.includes(sections: :cards)
                 .find_by(slug: params[:slug])
   end
 end

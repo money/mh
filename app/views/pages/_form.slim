@@ -18,8 +18,8 @@
     .bg-light.p-3
       .form-group
         = f.label :position
-        = f.number_field :position, value: @page.position, class: 'form-control',
-                                    min: 1, max: 10,
+        = f.number_field :position, value: @page.position,
+                                    class: 'form-control', min: 0, max: 10,
                                     placeholder: 'Navigable state page must have position'
       .form-group
         = f.text_field :title, placeholder: 'Page Title', class: 'form-control'
