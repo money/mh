@@ -2,6 +2,7 @@
 
 # home controller
 class HomeController < ApplicationController
+  skip_before_action :authenticate_account!
   before_action :navigable_pages
 
   def show

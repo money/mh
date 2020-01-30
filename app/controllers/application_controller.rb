@@ -2,6 +2,8 @@
 
 # application controller
 class ApplicationController < ActionController::Base
+  before_action :authenticate_account!
+
   private
 
   def navigable_pages
