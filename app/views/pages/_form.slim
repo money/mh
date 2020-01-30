@@ -6,23 +6,29 @@
           .clearfix= layout.label { image_tag("#{layout.text}.png", width: '200px') }
           .text-center= layout.label { layout.radio_button + ' ' + layout.text.humanize }
       hr.col
-    .form-group
-      = f.file_field :image, class: 'form-control-file'
+    .form-group.row
+      .col-6
+        .lead.mt-5.pt-5
+          = f.label :image, 'Upload image (1280px X 400px)'
+        = f.file_field :image, class: 'form-control-file'
+      .col-6.text-center
+        = image_tag 'page_layout.png', width: '50%'
       hr
         = image_tag @page.image, height: '200' if @page.image.present?
-    .form-group
-      = f.label :position
-      = f.number_field :position, value: @page.position, class: 'form-control',
-                                  min: 1, max: 10,
-                                  placeholder: 'Navigable state page must have position'
-    .form-group
-      = f.text_field :title, placeholder: 'Page Title', class: 'form-control'
-    .form-group
-      = f.label :aasm_state, 'Choose state'
-      = f.select :aasm_state, Page.aasm.states.map(&:name),
-        value: @page.aasm_state, class: 'form-control'
-    .form-group
-      = f.text_field :content, placeholder: 'Page content', class: 'form-control'
+    .bg-light.p-3
+      .form-group
+        = f.label :position
+        = f.number_field :position, value: @page.position, class: 'form-control',
+                                    min: 1, max: 10,
+                                    placeholder: 'Navigable state page must have position'
+      .form-group
+        = f.text_field :title, placeholder: 'Page Title', class: 'form-control'
+      .form-group
+        = f.label :aasm_state, 'Choose state'
+        = f.select :aasm_state, Page.aasm.states.map(&:name),
+          value: @page.aasm_state, class: 'form-control'
+      .form-group
+        = f.text_field :content, placeholder: 'Page content', class: 'form-control'
     - if @page.sections.any?
       hr.col
       .sections.shadow

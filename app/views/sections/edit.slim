@@ -1,9 +1,12 @@
 .row.mt-3
   .col-8.offset-2
-    .form-group.row
+    .row.mb-3
+      .col-6.offset-6
+        = image_tag 'cards_layout.png', width: '50%'
+    .row.col
       .col-4
         .lead= label_tag 'Choose number of cards'
-      .row.col
+      .col-8.row
         - ['1', '2', '3'].each do |index|
           .col-4= button_to index, edit_section_path(@section.id),
             params: { cards_size: index },
