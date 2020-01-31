@@ -37,18 +37,21 @@ html
 
     .col-12
       = render partial: 'shared/notification'
-    .row
-      .col.align-items-start.mb-1
-        ul.list-group.list-group-horizontal
-          li.list-group-item
-            = link_to 'Learn Markdown',
-              'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
-              target: '_blank',
-              class: 'text-info'
-      .align-items-end.mr-3.mb-1
-        ul.list-group.list-group-horizontal
-          li.list-group-item= link_to 'add page', [:new, :page]
-          = yield :controls
+    - if account_signed_in? && current_account.admin?
+      .row
+        .col.align-items-start.mb-1
+          ul.list-group.list-group-horizontal
+            li.list-group-item
+              = link_to 'Learn Markdown',
+                'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
+                target: '_blank',
+                class: 'text-info'
+        .align-items-end.mr-3.mb-1
+          ul.list-group.list-group-horizontal
+            li.list-group-item= link_to 'add page', [:new, :page]
+            = yield :controls
+            li.list-group-item= link_to 'sign out', destroy_account_session_path,
+                                method: :delete
     - if !current_page?(root_path) && @navigable_pages.present?
       nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom.row
         button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"

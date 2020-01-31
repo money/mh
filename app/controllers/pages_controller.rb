@@ -51,6 +51,6 @@ class PagesController < ApplicationController
 
   def find_page
     @page = authorize Page.includes(sections: :cards)
-                .find_by(slug: params[:slug])
+                          .find_by(slug: params[:slug])
   end
 end

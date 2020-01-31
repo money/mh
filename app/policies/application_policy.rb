@@ -10,15 +10,15 @@ class ApplicationPolicy
   end
 
   def index?
-    admin?
+    @account.admin?
   end
 
   def show?
-    admin?
+    @account.admin?
   end
 
   def create?
-    admin?
+    @account.admin?
   end
 
   def new?
@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    admin?
+    @account.admin?
   end
 
   def edit?
@@ -34,13 +34,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    admin?
-  end
-
-  def admin?
-    Role.joins(:accounts)
-        .admin.find_by(accounts: { id: @account.id })
-        .admin?
+    @account.admin?
   end
 
   # scope

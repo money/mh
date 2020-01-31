@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def account_not_authorized
     flash[:alert] = 'Access denied.'
-    redirect_to (request.referrer || root_path)
+    redirect_to request.referrer || root_path
   end
 
   def navigable_pages
@@ -19,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def pundit_user
     current_account
+  end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || root_path
   end
 end
