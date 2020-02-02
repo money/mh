@@ -6,7 +6,7 @@ class Section < Page
   LAYOUT = [%w[default default_layout], %w[profile profile_layout]].freeze
 
   # default scope
-  default_scope { where(type: 'Section') }
+  default_scope { includes(:page, :cards).where(type: 'Section') }
 
   # attributes
   attr_accessor :cards_size

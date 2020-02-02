@@ -5,32 +5,13 @@ $enable-gradients: true
 @import 'trix/dist/trix'
 @import './actiontext.scss'
 @import 'resources'
+@import 'our_story'
 
 .myndheal-logo
   height: 13rem
 
   .myndheal-logo-circle
     filter: drop-shadow(0 5px 1px rgba(0, 0, 0, .5))
-
-.billboard
-  height: 408px
-  .tagline
-    font-size: 2rem
-
-.home-billboard-image
-  background: url('/assets/billboard-placeholder.png') no-repeat center center
-
-.services-fees-billboard-image
-  background: url('/assets/services-fees-image.png') no-repeat center center
-
-.our-story-billboard-image
-  background: url('/assets/our-story-image.jpeg') no-repeat center center
-
-
-.home-billboard-image,
-.services-fees-billboard-image,
-.our-story-billboard-image
-  background-size: 100%
 
 .card-deck
   .align-self-center
@@ -77,10 +58,3 @@ p
   margin-top: 25%
 
 @include media-breakpoint-only(xs)
-  .billboard
-    background-size: 300%
-
-  .home-billboard-image,
-  .services-fees-billboard-image,
-  .our-story-billboard-image
-    background-size: 200%

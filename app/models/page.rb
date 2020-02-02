@@ -3,6 +3,7 @@
 # page
 class Page < ApplicationRecord
   # default scope
+  default_scope -> { includes(sections: :cards) }
 
   # constants
   LAYOUT = [%w[default default_layout], %w[profile profile_layout]].freeze
