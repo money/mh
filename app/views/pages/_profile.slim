@@ -9,11 +9,12 @@
   .col-md-4.col-xs-12
     = profile_image
 
-    .mt-5
-      .display-4.text-center.font-weight-lighter.text-wrap
-        = @page.sections.first.title
-    .mt-5.col.text-center.lead
-      = html_content(@page.sections.first.content)
+    - @page.sections.any?
+      .mt-5
+        .display-4.text-center.font-weight-lighter.text-wrap
+          = @page.sections.first.title
+      .mt-5.col.text-center.lead
+        = html_content(@page.sections.first.content)
 
   .col-md-8.col-xs-12
     - @page.sections.drop(1).each do |section|
