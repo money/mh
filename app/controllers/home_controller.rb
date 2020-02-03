@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   before_action :navigable_pages
 
   def show
-    @page = Page.order(position: :asc)
-                .find_by(slug: 'home', type: nil)
+    @page = Page.find_by(slug: 'home', type: nil)
   end
 end

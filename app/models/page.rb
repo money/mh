@@ -13,9 +13,10 @@ class Page < ApplicationRecord
 
   # associations
   has_many :sections,
-           -> { where(type: 'Section') }, class_name: 'Page',
-                                          dependent: :destroy,
-                                          foreign_key: :parent_id
+           -> { where(type: 'Section').order(position: :asc) },
+           class_name: 'Page',
+           dependent: :destroy,
+           foreign_key: :parent_id
 
   # validations
   with_options if: :page_class? do |page|
