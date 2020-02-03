@@ -1,6 +1,1 @@
-= content_for :controls
-  ul.list-group.list-group-horizontal
-    li.list-group-item= link_to 'edit', [:edit, @page]
-    li.list-group-item= link_to 'add section', new_page_section_path(@page.slug)
-
 = render partial: @page.layout

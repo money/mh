@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   def create
     @page = authorize Page.new(page_params)
     if @page.save
-      redirect_to :pages
+      redirect_to @page
     else
       render :new
     end
@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   def update
     if @page.update(page_params)
       flash[:notice] = 'Page updated'
-      redirect_to :pages
+      redirect_to @page
     else
       render :edit
     end

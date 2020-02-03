@@ -14,8 +14,9 @@ class Section < Page
   # associations
   belongs_to :page, foreign_key: :parent_id
   has_many :cards,
-           -> { where(type: 'Card') }, class_name: 'Page', dependent: :destroy,
-                                       foreign_key: :parent_id
+           -> { includes(:cards).where(type: 'Card').order(position: :asc) },
+           class_name: 'Page', dependent: :destroy,
+           foreign_key: :parent_id
 
   # validations
 

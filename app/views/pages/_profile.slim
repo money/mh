@@ -1,6 +1,8 @@
 .card.bg-dark.text-white.border-0
   = billboard_image
   .card-img-overlay.mt-5
+    - if current_account.admin?
+      = link_to 'edit page', [:edit, @page], class: 'btn btn-success'
     .col-sm-4.offset-sm-4.col-xs-8.offset-xs-2.mt-5.bg-white
       - @page.content
         h1.card-title.p-3.text-dark= @page.content
@@ -10,6 +12,10 @@
     = profile_image
 
     - @page.sections.any?
+      .text-center
+        = link_to "edit section #{@page.sections.first.position}",
+                  edit_section_path(@page.section_ids.first),
+                  class: 'btn btn-success'
       .mt-5
         .display-4.text-center.font-weight-lighter.text-wrap
           = @page.sections.first.title
@@ -19,5 +25,8 @@
   .col-md-8.col-xs-12
     - @page.sections.drop(1).each do |section|
       .col-10.mt-3.h5.font-weight-light.therapist-bio
+        .col-3.offset-9.text-right
+          = link_to "edit section #{section.position}", edit_section_path(section.id),
+                     class: 'btn btn-success'
         h3.font-weight-light= section.title
         p= html_content(section.content)
