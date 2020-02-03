@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'devise', '~> 4.7.1'
 gem 'jbuilder', '~> 2.7'
+gem 'passenger', '~> 6.0.4'
 gem 'pg', '~> 1.2.1'
 gem 'puma', '~> 3.11'
 gem 'pundit', '~> 2.1.0'

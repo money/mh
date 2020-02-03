@@ -160,6 +160,9 @@ GEM
     parallel (1.19.1)
     parser (2.7.0.1)
       ast (~> 2.4.0)
+    passenger (6.0.4)
+      rack
+      rake (>= 0.8.1)
     pg (1.2.1)
     pg (1.2.1-x64-mingw32)
     pg (1.2.1-x86-mingw32)
@@ -325,6 +328,7 @@ DEPENDENCIES
   devise (~> 4.7.1)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  passenger (~> 6.0.4)
   pg (~> 1.2.1)
   puma (~> 3.11)
   pundit (~> 2.1.0)
