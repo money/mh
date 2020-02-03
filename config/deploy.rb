@@ -24,7 +24,7 @@ set :deploy_to, '/var/www/myndheal'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/master.key'
+append :linked_files, ['config/master.key', 'config/credentials.yml.enc']
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets",
