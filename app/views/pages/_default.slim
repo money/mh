@@ -10,9 +10,10 @@
 - @page.sections.each do |section|
   - cache section do
     .section.pb-5.pt-5 class=cycle('bg-light', 'bg-white')
-      .col-3.offset-9.text-right
-        = link_to "edit section #{section.position}", edit_section_path(section.id),
-                   class: 'btn btn-success'
+      - if account_signed_in? && current_account.admin?
+        .col-3.offset-9.text-right
+          = link_to "edit section #{section.position}", edit_section_path(section.id),
+                     class: 'btn btn-success'
       - if section.title.present? || section.content.present?
         .col-md-6.offset-md-3.col-sm-12.m-auto
           .card-deck
