@@ -2,7 +2,7 @@
 
 # account
 class Account < ApplicationRecord
-  default_scope -> { includes(:roles) }
+  default_scope -> { eager_load(:roles) }
 
   # attributes
 
@@ -15,8 +15,7 @@ class Account < ApplicationRecord
   has_many :account_roles
   has_many :roles, through: :account_roles, inverse_of: :accounts
 
-  # meta
   def admin?
-    roles.select { |role| role.title == 'admin' }.any?
+    roles.any?(&:admin?)
   end
 end

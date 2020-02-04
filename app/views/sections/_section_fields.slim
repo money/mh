@@ -1,0 +1,16 @@
+.form-group.form-check
+  = f.check_box :_destroy, class: 'form-check-input'
+  = f.label :_destroy, 'Remove', class: 'form-check-label'
+.form-group
+  - if f.object.image.present?
+    = image_tag f.object.image, width: '15%'
+  = f.file_field :image, class: 'form-control-file'
+.form-group
+  = f.text_field :title, class: 'form-control',
+                          placeholder: ''
+.form-group
+  = f.number_field :position, class: 'form-control', min: 1, max: 10
+.form-group
+  = f.text_area :content, value: f.object.content,
+                           class: 'form-control', rows: 10
+hr

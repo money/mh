@@ -36,27 +36,12 @@
         .form-group
           = f.fields_for :sections do |sf|
             div.col-12.p-3 class=cycle('bg-gradient-light', 'bg-white')
-              .form-group.form-check
-                = sf.check_box :_destroy, class: 'form-check-input'
-                = sf.label :_destroy, 'Remove', class: 'form-check-label'
+              = render partial: 'sections/section_fields', locals: { f: sf }
               .form-group
-                - if sf.object.image.present?
-                  = image_tag sf.object.image, width: '15%'
-                = sf.file_field :image, class: 'form-control-file'
-              .form-group
-                = sf.text_field :title, class: 'form-control',
-                                        placeholder: ''
-              .form-group
-                = sf.number_field :position, class: 'form-control', min: 1, max: 10
-              .form-group
-                = sf.hidden_field :content, value: html_content(sf.object.content)
-                trix-editor input="page_sections_attributes_#{sf.index}_content"
-              hr
-              .form-group
-                .col-2.offset-10.text-right.p-0
-                  = link_to 'edit cards', edit_section_path(sf.object.id, cards_size: sf.object.cards.size),
-                    class: 'btn btn-outline-success'
-              - sf.object.cards.each do |card|
-                = image_tag card.image if card.image.present?
+                  .col-2.offset-10.text-right.p-0
+                    = link_to 'edit cards', edit_section_path(sf.object.id, cards_size: sf.object.cards.size),
+                      class: 'btn btn-outline-success'
+                  - sf.object.cards.each do |card|
+                    = image_tag card.image if card.image.present?
 
     = f.submit class: 'btn btn-primary'

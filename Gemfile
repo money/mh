@@ -17,7 +17,7 @@ gem 'pundit', '~> 2.1.0'
 gem 'rack-mini-profiler', '~> 1.1.3'
 gem 'rails', '~> 6.0.0'
 gem 'redcarpet', '~> 3.5.0'
-gem 'reverse_markdown', '~> 1.4.0'
+gem 'redis', '~> 4.1.3'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5'
 gem 'slim', '~> 4.0.1'

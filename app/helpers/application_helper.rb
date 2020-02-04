@@ -3,16 +3,19 @@
 # application helper
 module ApplicationHelper
   def html_content(string)
+    return string if string.blank?
+
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_images: true,
                                                                 tables: true)
-    markdown.render(string.to_s).html_safe
+    markdown.render(string).html_safe
   end
 
   def billboard_image
     if @page.image.try(:present?)
       image_tag @page.image, class: 'd-block w-100', height: '400px'
     else
-      image_tag 'billboard-placeholder.png', class: 'd-block w-100', height: '400px'
+      image_tag 'billboard-placeholder.png', class: 'd-block w-100',
+                                             height: '400px'
     end
   end
 

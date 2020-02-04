@@ -6,7 +6,7 @@ class Section < Page
   LAYOUT = [%w[default default_layout], %w[profile profile_layout]].freeze
 
   # default scope
-  default_scope { includes(:page, :cards).where(type: 'Section') }
+  default_scope { where(type: 'Section') }
 
   # attributes
   attr_accessor :cards_size
@@ -14,21 +14,17 @@ class Section < Page
   # associations
   belongs_to :page, foreign_key: :parent_id
   has_many :cards,
-           -> { includes(:cards).where(type: 'Card').order(position: :asc) },
+           -> { where(type: 'Card').order(position: :asc) },
            class_name: 'Page', dependent: :destroy,
            foreign_key: :parent_id
 
   # validations
 
   # callbacks
-  before_save :markdown_content
 
   # accepts nested attributes
   accepts_nested_attributes_for :cards, limit: 3, reject_if: :all_blank,
                                         allow_destroy: true
 
   # instance methods
-  def markdown_content
-    self.content = ReverseMarkdown.convert(content, github_flavored: true)
-  end
 end

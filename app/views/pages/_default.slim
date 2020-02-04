@@ -1,34 +1,35 @@
 .card.bg-dark.text-white.border-0
   = billboard_image
   .card-img-overlay.mt-5
-    - if current_account.admin?
+    - if account_signed_in? && current_account.admin?
       = link_to 'edit page', [:edit, @page], class: 'btn btn-success'
     .col-sm-4.offset-sm-4.col-xs-8.offset-xs-2.mt-5.bg-white
       - @page.content
         h1.card-title.p-3.text-dark= @page.content
 
 - @page.sections.each do |section|
-  .section.pb-5.pt-5 class=cycle('bg-light', 'bg-white')
-    .col-3.offset-9.text-right
-      = link_to "edit section #{section.position}", edit_section_path(section.id),
-                 class: 'btn btn-success'
-    - if section.title.present? || section.content.present?
-      .col-md-6.offset-md-3.col-sm-12.m-auto
-        .card-deck
-          .card.border-0.bg-transparent
-            .card-body
-              h2.text-center.font-weight-normal= html_content(section.title)
-              h5.font-weight-light.col-10.offset-1= html_content(section.content)
+  - cache section do
+    .section.pb-5.pt-5 class=cycle('bg-light', 'bg-white')
+      .col-3.offset-9.text-right
+        = link_to "edit section #{section.position}", edit_section_path(section.id),
+                   class: 'btn btn-success'
+      - if section.title.present? || section.content.present?
+        .col-md-6.offset-md-3.col-sm-12.m-auto
+          .card-deck
+            .card.border-0.bg-transparent
+              .card-body
+                h2.text-center.font-weight-normal= html_content(section.title)
+                h5.font-weight-light.col-10.offset-1= html_content(section.content)
 
-    - if section.cards.size == 3
-      .col-8.offset-2
-        .card-deck.accordion id="accordion-#{section.id}"
-          = render partial: "pages/card_3", collection: section.cards,
-                   as: :card, cached: true
-    - if section.cards.size == 2
-      .row.row-cols-1.row-cols-lg-2
-        = render partial: "pages/card_2", collection: section.cards,
-                 as: :card, cached: true
-    - if section.cards.size == 1
-      = render partial: "pages/card_1", collection: section.cards,
-               as: :card, cached: true
+      - if section.cards.size == 3
+        .col-8.offset-2
+          .card-deck.accordion id="accordion-#{section.id}"
+            = render partial: "pages/card_3", collection: section.cards,
+                     as: :card
+      - if section.cards.size == 2
+        .row.row-cols-1.row-cols-lg-2
+          = render partial: "pages/card_2", collection: section.cards,
+                   as: :card
+      - if section.cards.size == 1
+        = render partial: "pages/card_1", collection: section.cards,
+                 as: :card

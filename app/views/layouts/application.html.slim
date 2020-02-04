@@ -59,11 +59,12 @@ html
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.nav-fill.w-100
             - @navigable_pages.each do |page|
-              li.nav-item
-                = link_to page.title, page.slug, class: 'nav-link'
+              - cache page do
+                li.nav-item
+                  = link_to page.title, page.slug, class: 'nav-link'
             li.nav-item
               = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
-                class: 'text-success',
+                class: 'btn btn-success text-white nav-link',
                 data: { spwidget_scope_id: 'd1857250-eabf-4ffd-af2b-3988e1390094',
                         spwidget_scope_uri: 'myndheal',
                         spwidget_application_id: '7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b',

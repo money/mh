@@ -1,17 +1,4 @@
 .col.mt-3
   = form_for [@page, @section] do |f|
-    .form-group.form-check
-      = f.check_box :_destroy, class: 'form-check-input'
-      = f.label :_destroy, 'Remove', class: 'form-check-label'
-    .form-group
-      = f.text_field :title, class: 'form-control'
-    .form-group
-      = f.file_field :image, class: 'form-control-file'
-    .form-group
-      = f.number_field :position, class: 'form-control',
-                                  placeholder: 'position order',
-                                  min: 1, max: 10
-    .form-group
-      = f.hidden_field :content, value: html_content(f.object.try(:content))
-      trix-editor input="section_content"
+    = render partial: 'sections/section_fields', locals: { f: f }
     = f.submit class: 'btn btn-primary'

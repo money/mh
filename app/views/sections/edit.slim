@@ -14,24 +14,11 @@
     hr.col
   = form_for @section, url: section_path(@section.id), method: :patch,
                        html: { class: 'col-8 offset-2' } do |f|
+    = render partial: 'sections/section_fields', locals: { f: f }
     .form-group.row
-      = f.fields_for :cards do |cf|
-        div.col-12.p-3 class=cycle('bg-gradient-light', 'bg-white')
-          .form-group.form-check
-            = cf.check_box :_destroy, class: 'form-check-input'
-            = cf.label :_destroy, 'Remove', class: 'form-check-label'
-          .form-group
-            = cf.number_field :position, value: (cf.index + 1),
-              min: 1, max: 3, class: 'form-control',
-              placeholder: 'order of card'
-          .form-group
-            - if cf.object.try(:image).try(:present?)
-              = image_tag cf.object.image, width: '15%'
-            = cf.file_field :image, class: 'form-control-file'
-          .form-group
-            = cf.text_field :title, class: 'form-control'
-          .form-group
-            = cf.hidden_field :content, value: html_content(cf.object.try(:content))
-            trix-editor input="section_cards_attributes_#{cf.index}_content"
-          hr
+      .col.cards.shadow
+        h1.col-12.text-center Cards
+        = f.fields_for :cards do |cf|
+          div.col-12.p-3 class=cycle('bg-gradient-light', 'bg-white')
+            = render partial: 'sections/section_fields', locals: { f: cf }
     = f.submit class: 'btn btn-primary'

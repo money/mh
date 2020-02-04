@@ -1,11 +1,12 @@
-.card.border-0.bg-transparent.m-5
-  = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark something',
-    data: { toggle: (card.content.present? ? 'popover' : ''),
-            placement: 'top', html: 'true',
-            content: html_content(card.content) } do
+- cache card do
+  .card.border-0.bg-transparent.m-5
+    = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark something',
+      data: { toggle: (card.content.present? ? 'popover' : ''),
+              placement: 'top', html: 'true',
+              content: html_content(card.content) } do
 
-    - if card.image.present?
-      = image_tag card.image, class: 'card-img-top rounded-0'
-    .align-self-center.col.text-center
-      .mr-auto.ml-auto.lead.w-75.bg-white.font-weight-bold
-        = card.title.match(/(?<=\[).+?(?=\])/).to_s
+      - if card.image.present?
+        = image_tag card.image, class: 'card-img-top rounded-0'
+      .align-self-center.col.text-center
+        .mr-auto.ml-auto.lead.w-75.bg-white.font-weight-bold
+          = card.title.match(/(?<=\[).+?(?=\])/).to_s

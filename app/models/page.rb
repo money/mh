@@ -3,7 +3,7 @@
 # page
 class Page < ApplicationRecord
   # default scope
-  default_scope -> { includes(sections: :cards) }
+  # default_scope -> { eager_load(:sections) }
 
   # constants
   LAYOUT = [%w[default default_layout], %w[profile profile_layout]].freeze
@@ -13,7 +13,10 @@ class Page < ApplicationRecord
 
   # associations
   has_many :sections,
-           -> { where(type: 'Section').order(position: :asc) },
+           lambda {
+             where(type: 'Section')
+               .order(position: :asc)
+           },
            class_name: 'Page',
            dependent: :destroy,
            foreign_key: :parent_id

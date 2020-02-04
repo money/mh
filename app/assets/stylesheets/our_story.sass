@@ -2,7 +2,9 @@ body
   &.our_story
     .profile
       table
-        font-size: 1rem
+        @extend .table
+        @extend .table-borderless
+        font-size: 1.1rem
         tr
           td:first-child
             white-space: nowrap

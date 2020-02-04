@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def pundit_user
+    Rack::MiniProfiler.authorize_request if current_account.admin?
     current_account
   end
 
