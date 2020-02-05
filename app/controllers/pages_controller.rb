@@ -2,6 +2,7 @@
 
 # pages controller
 class PagesController < ApplicationController
+  skip_before_action :authenticate_account!, only: :show
   before_action :navigable_pages
   before_action :find_page, only: %i[edit update show destroy]
 
