@@ -28,7 +28,7 @@ class SectionsController < ApplicationController
 
   def update
     if @section.update(section_params)
-      redirect_to :pages
+      redirect_to @section.page
     else
       render :edit
     end
