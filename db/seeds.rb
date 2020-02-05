@@ -209,3 +209,9 @@ Page.new(title: 'New Client', aasm_state: 'published', layout: 'default') do |pa
     section.title = 'New Client Section'
   end
 end.save(validate: false)
+
+Page.new(title: 'Technical Requirement', aasm_state: 'published', layout: 'default') do |page|
+  page.sections.build(type: 'Section', position: 1) do |section|
+    section.title = 'Technical requirement'
+  end
+end.save(validate: false)
