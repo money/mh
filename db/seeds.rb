@@ -3,9 +3,7 @@
 Page.destroy_all
 
 Page.new(title: 'Home', aasm_state: 'published', layout: 'default') do |page|
-  page.sections.build(type: 'Section', position: 1)
-
-  page.sections.build(type: 'Section', position: 2) do |section|
+  page.sections.build(type: 'Section', position: 1) do |section|
     section.cards.build(type: 'Card') do |card|
       card.position = 1
       card.title = '[Our Story](/our_story)'
@@ -24,7 +22,7 @@ Page.new(title: 'Home', aasm_state: 'published', layout: 'default') do |page|
 
   page.sections.build(
     type: 'Section',
-    position: 3,
+    position: 2,
     title: 'A confidential and secure way to receive support',
     content: 'MyndHeal provides therapy for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss.'
   )
@@ -45,7 +43,6 @@ License: **LCSW 79759**
 END
 
 Page.new(title: 'Our Story', position: 1, aasm_state: 'navigable', layout: 'profile') do |page|
-
   page.sections.build(
     type: 'Section',
     position: 1,
@@ -88,11 +85,7 @@ Page.new(title: 'Our Story', position: 1, aasm_state: 'navigable', layout: 'prof
 end.save(validate: false)
 
 Page.new(title: 'Services & Fees', position: 2, aasm_state: 'navigable', layout: 'default') do |page|
-  page.sections.build(type: 'Section', position: 1)
-
-
-  page.sections.build(type: 'Section', position: 2) do |section|
-
+  page.sections.build(type: 'Section', position: 1) do |section|
     individual_markdown = <<~END
       ###Individual Counseling###
 
@@ -127,12 +120,12 @@ Page.new(title: 'Services & Fees', position: 2, aasm_state: 'navigable', layout:
     end
   end
 
-  page.sections.build(position: 3, type: 'Section') do |section|
+  page.sections.build(position: 2, type: 'Section') do |section|
     section.title = 'A confidential and secure way to receive support'
     section.content = 'MyndHeal provides therapy to people with depression, anxiety, trauma, mental illness, parenting struggles, domestic violence, substance abuse, grief and loss.'
   end
 
-  page.sections.build(position: 4, type: 'Section') do |section|
+  page.sections.build(position: 3, type: 'Section') do |section|
     grief_markdown = <<~END
       ###Grief and Loss###
 
