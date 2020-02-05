@@ -90,10 +90,15 @@ html
                 li= link_to 'FAQ', '/faq', class: 'text-dark'
                 li= link_to 'Technical Requirements', '/new_client',
                     class: 'text-dark'
+                li.pt-3
+                  span.mr-3
+                    = image_tag 'hipaa-logo.png', width: '80 p-2'
+                  span
+                    = image_tag 'ssl-logo.png', width: '80 p-2'
         .col.mb-4
           .card.border-0.bg-transparent
             .card-body
-              h5.card-title Mobile App
+              h5.card-title Get Telehealth App
               = link_to 'https://apps.apple.com/us/app/telehealth-by-simplepractice/id1351373906#?platform=iphone', class: 'p-3', target: '_blank' do
                 = image_tag 'apple-logo.png', width: '50'
               = link_to 'https://play.google.com/store/apps/details?id=com.simplepractice.video', class: 'p-3', target: '_blank' do
@@ -103,10 +108,6 @@ html
             .card-body
               h5.card-title MyndHeal
               ul.list-unstyled
-                li (916) 400-0633
+                li
+                  | (916) 400-0633
                 li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
-                li.pt-2
-                  span.mr-3
-                    = image_tag 'hipaa-logo.png', width: '80 p-2'
-                  span
-                    = image_tag 'ssl-logo.png', width: '80 p-2'
