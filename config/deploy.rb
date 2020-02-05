@@ -31,7 +31,7 @@ append :linked_files, 'config/master.key', 'config/credentials.yml.enc'
 # "public/system"
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
        'public/system', 'public/uploads', '.bundle',
-       'vendor/bundle'
+       'vendor/bundle', 'storage'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
