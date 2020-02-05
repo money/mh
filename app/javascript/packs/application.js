@@ -23,6 +23,7 @@ document.addEventListener("trix-file-accept", function(event) {
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
     template: '<div class="popover border-0 shadow bg-gradient-info" role="tooltip">' +
                 '<div class="arrow"></div>' +
                 '<div class="col align-self-center">' +

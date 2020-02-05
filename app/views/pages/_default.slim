@@ -26,11 +26,11 @@
         .col-8.offset-2
           .card-deck.accordion id="accordion-#{section.id}"
             = render partial: "pages/card_3", collection: section.cards,
-                     as: :card
+                     as: :card, cached: true
       - if section.cards.size == 2
         .row.row-cols-1.row-cols-lg-2
           = render partial: "pages/card_2", collection: section.cards,
-                   as: :card
+                   as: :card, cached: true
       - if section.cards.size == 1
         = render partial: "pages/card_1", collection: section.cards,
-                 as: :card
+                 as: :card, cached: true

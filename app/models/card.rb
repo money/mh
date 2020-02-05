@@ -3,5 +3,5 @@
 # card
 class Card < Section
   # associations
-  belongs_to :section, foreign_key: :parent_id
+  belongs_to :section, foreign_key: :parent_id, touch: true
 end

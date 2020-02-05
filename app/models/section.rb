@@ -12,7 +12,7 @@ class Section < Page
   attr_accessor :cards_size
 
   # associations
-  belongs_to :page, foreign_key: :parent_id
+  belongs_to :page, foreign_key: :parent_id, touch: true
   has_many :cards,
            -> { where(type: 'Card').order(position: :asc) },
            class_name: 'Page', dependent: :destroy,
