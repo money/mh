@@ -8,7 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body class="container #{@page.try(:slug)}"
+  body class="container-lg #{@page.try(:slug)}"
     .container-content.shadow-lg.bg-white
       .row
         div.col-6
