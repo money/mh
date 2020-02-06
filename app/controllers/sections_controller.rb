@@ -38,9 +38,9 @@ class SectionsController < ApplicationController
 
   def section_params
     params.require(:section)
-          .permit(:id, :image, :position, :content, :title, :remove_image,
+          .permit(:id, :image, :position, :content, :title,
                   cards_attributes: %i[id title image position content
-                                       remove_image parent_id type _destroy])
+                                       parent_id type _destroy])
   end
 
   def find_page
