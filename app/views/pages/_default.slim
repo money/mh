@@ -9,13 +9,13 @@
 
 - @page.sections.each do |section|
   - cache section do
-    .section.pb-5.pt-5 class=cycle('bg-light', 'bg-white')
+    .section.pt-4 class=cycle('bg-light', 'bg-white')
       - if account_signed_in? && current_account.admin?
         .col-3.offset-9.text-right
           = link_to "edit section #{section.position}", edit_section_path(section.id, cards_size: section.cards.size),
                      class: 'btn btn-success'
       - if section.title.present? || section.content.present?
-        .col-md-6.offset-md-3.col-sm-12.m-auto
+        .col-md-8.offset-md-2.col-sm-12.m-auto
           .card-deck
             .card.border-0.bg-transparent
               .card-body
@@ -23,7 +23,7 @@
                 h5.font-weight-light.col-10.offset-1= html_content(section.content)
 
       - if section.cards.size == 3
-        .col-8.offset-2
+        .col-12
           .card-deck.accordion id="accordion-#{section.id}"
             = render partial: "pages/card_3", collection: section.cards,
                      as: :card, cached: true

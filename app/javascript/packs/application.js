@@ -7,7 +7,9 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 require("bootstrap")
+require("popper.js")
 require("trix")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -23,7 +25,7 @@ document.addEventListener("trix-file-accept", function(event) {
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover({
-    trigger: 'hover',
+    trigger: 'focus',
     template: '<div class="popover border-0 shadow bg-gradient-info" role="tooltip">' +
                 '<div class="arrow"></div>' +
                 '<div class="col align-self-center">' +
