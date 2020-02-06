@@ -8,102 +8,103 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body class="container-fluid #{@page.try(:slug)}"
-    .row
-      div.col-6
-        / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
-        /   = image_tag "facebook-logo.png", class: 'p-2'
-        = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
-          = image_tag "instagram-logo.png", class: 'p-2'
-        = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
-          = image_tag "twitter-logo.png", class: 'p-2'
-      div.col-6.text-right.pt-2
-        = link_to 'New Client', '/new_client', class: 'btn btn-secondary mr-2'
-        = link_to 'Portal login', 'https://myndheal.clientsecure.me',
-          class: 'btn btn-secondary', target: '_blank'
-    .row.position-relative.myndheal-logo
-      .col.text-center
-        = link_to_unless current_page?(root_path),
-          image_tag('myndheal-logo-circle.png',
-          class: 'position-absolute myndheal-logo-circle'), root_path
-        = image_tag 'myndheal-logo-name.png', class: 'mt-5 pt-4 ml-4'
-    .col.text-center
-      p.lead.mb-0 A Web Based Psychotherapy Company
-      p.lead Making Mental Health a Priority
-
-    .col-12
-      = render partial: 'shared/notification'
-    - if account_signed_in? && current_account.admin?
+  body class="container #{@page.try(:slug)}"
+    .container-content.shadow-lg.bg-white
       .row
-        .col.align-items-start.mb-1
-          ul.list-group.list-group-horizontal
-            li.list-group-item
-              = link_to 'Learn Markdown',
-                'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
-                target: '_blank',
-                class: 'text-info'
-            li.list-group-item
-              = link_to 'Image Resizer',
-                'https://imageresizer.com',
-                target: '_blank',
-                class: 'text-info'
-        .align-items-end.mr-3.mb-1
-          ul.list-group.list-group-horizontal
-            li.list-group-item= link_to 'pages', :pages
-            li.list-group-item= link_to 'add page', [:new, :page]
-            = yield :controls
-            li.list-group-item= link_to 'sign out', destroy_account_session_path,
-                                method: :delete
-    - if !current_page?(root_path) && @navigable_pages.present?
-      nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom.row
-        button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
-          span.navbar-toggler-icon
-        #navbarNav.collapse.navbar-collapse
-          ul.navbar-nav.nav-fill.w-100
-            - @navigable_pages.each do |page|
-              - cache page do
-                li.nav-item
-                  = link_to page.title, page.slug, class: 'nav-link'
-            li.nav-item
-              = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
-                class: 'btn btn-success text-white nav-link',
-                data: { spwidget_scope_id: 'd1857250-eabf-4ffd-af2b-3988e1390094',
-                        spwidget_scope_uri: 'myndheal',
-                        spwidget_application_id: '7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b',
-                        spwidget_scope_global: '',
-                        spwidget_autobind: '' }
-              = javascript_include_tag "https://widget-cdn.simplepractice.com/assets/integration-1.0.js", cached: true
+        div.col-6
+          / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
+          /   = image_tag "facebook-logo.png", class: 'p-2'
+          = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
+            = image_tag "instagram-logo.png", class: 'p-2'
+          = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
+            = image_tag "twitter-logo.png", class: 'p-2'
+        div.col-6.text-right.pt-2
+          = link_to 'New Client', '/new_client', class: 'btn btn-secondary mr-2'
+          = link_to 'Portal login', 'https://myndheal.clientsecure.me',
+            class: 'btn btn-secondary', target: '_blank'
+      .row.position-relative.myndheal-logo
+        .col.text-center
+          = link_to_unless current_page?(root_path),
+            image_tag('myndheal-logo-circle.png',
+            class: 'position-absolute myndheal-logo-circle'), root_path
+          = image_tag 'myndheal-logo-name.png', class: 'mt-5 pt-4 ml-4'
+      .col.text-center
+        p.lead.mb-0 A Web Based Psychotherapy Company
+        p.lead Making Mental Health a Priority
 
-    = yield
+      .col-12
+        = render partial: 'shared/notification'
+      - if account_signed_in? && current_account.admin?
+        .row
+          .col.align-items-start.mb-1
+            ul.list-group.list-group-horizontal
+              li.list-group-item
+                = link_to 'Learn Markdown',
+                  'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
+                  target: '_blank',
+                  class: 'text-info'
+              li.list-group-item
+                = link_to 'Image Resizer',
+                  'https://imageresizer.com',
+                  target: '_blank',
+                  class: 'text-info'
+          .align-items-end.mr-3.mb-1
+            ul.list-group.list-group-horizontal
+              li.list-group-item= link_to 'pages', :pages
+              li.list-group-item= link_to 'add page', [:new, :page]
+              = yield :controls
+              li.list-group-item= link_to 'sign out', destroy_account_session_path,
+                                  method: :delete
+      - if !current_page?(root_path) && @navigable_pages.present?
+        nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom.row
+          button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
+            span.navbar-toggler-icon
+          #navbarNav.collapse.navbar-collapse
+            ul.navbar-nav.nav-fill.w-100
+              - @navigable_pages.each do |page|
+                - cache page do
+                  li.nav-item class=('active' if current_page?("/#{page.slug}"))
+                    = link_to page.title, page.slug, class: 'nav-link'
+              li.nav-item
+                = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
+                  class: 'btn btn-success text-white nav-link',
+                  data: { spwidget_scope_id: 'd1857250-eabf-4ffd-af2b-3988e1390094',
+                          spwidget_scope_uri: 'myndheal',
+                          spwidget_application_id: '7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b',
+                          spwidget_scope_global: '',
+                          spwidget_autobind: '' }
+                = javascript_include_tag "https://widget-cdn.simplepractice.com/assets/integration-1.0.js", cached: true
 
-    footer.bg-light.text-center.mt-4
-      .row.row-cols-1.row-cols-md-3
-        .col.mb-4
-          .card.border-0.bg-transparent
-            .card-body
-              h5.card-title Quick References
-              ul.list-unstyled
-                li= link_to 'FAQ', '/faq', class: 'text-dark'
-                li= link_to 'Technical Requirements', '/technical_requirement',
-                    class: 'text-dark'
-                li.pt-3
-                  span.mr-3
-                    = image_tag 'hipaa-logo.png', width: '80 p-2'
-                  span
-                    = image_tag 'ssl-logo.png', width: '80 p-2'
-        .col.mb-4
-          .card.border-0.bg-transparent
-            .card-body
-              h5.card-title Get Telehealth App
-              = link_to 'https://apps.apple.com/us/app/telehealth-by-simplepractice/id1351373906#?platform=iphone', class: 'p-3', target: '_blank' do
-                = image_tag 'apple-logo.png', width: '50'
-              = link_to 'https://play.google.com/store/apps/details?id=com.simplepractice.video', class: 'p-3', target: '_blank' do
-                = image_tag 'android-logo.png', width: '50'
-        .col.mb-4
-          .card.border-0.bg-transparent
-            .card-body
-              h5.card-title MyndHeal
-              ul.list-unstyled
-                li
-                  | (916) 400-0633
-                li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
+      = yield
+
+      footer.bg-light.text-center.mt-4
+        .row.row-cols-1.row-cols-md-3
+          .col.mb-4
+            .card.border-0.bg-transparent
+              .card-body
+                h5.card-title Quick References
+                ul.list-unstyled
+                  li= link_to 'FAQ', '/faq', class: 'text-dark'
+                  li= link_to 'Technical Requirements', '/technical_requirement',
+                      class: 'text-dark'
+                  li.pt-3
+                    span.mr-3
+                      = image_tag 'hipaa-logo.png', width: '80 p-2'
+                    span
+                      = image_tag 'ssl-logo.png', width: '80 p-2'
+          .col.mb-4
+            .card.border-0.bg-transparent
+              .card-body
+                h5.card-title Get Telehealth App
+                = link_to 'https://apps.apple.com/us/app/telehealth-by-simplepractice/id1351373906#?platform=iphone', class: 'p-3', target: '_blank' do
+                  = image_tag 'apple-logo.png', width: '50'
+                = link_to 'https://play.google.com/store/apps/details?id=com.simplepractice.video', class: 'p-3', target: '_blank' do
+                  = image_tag 'android-logo.png', width: '50'
+          .col.mb-4
+            .card.border-0.bg-transparent
+              .card-body
+                h5.card-title MyndHeal
+                ul.list-unstyled
+                  li
+                    | (916) 400-0633
+                  li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
