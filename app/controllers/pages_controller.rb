@@ -46,7 +46,7 @@ class PagesController < ApplicationController
   def page_params
     params.require(:page)
           .permit(:title, :aasm_state, :layout, :position, :content, :image,
-                  sections_attributes: %i[id title image
+                  sections_attributes: %i[id title image remove_image
                                           position content _destroy])
   end
 

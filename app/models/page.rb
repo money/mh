@@ -3,7 +3,9 @@
 # page
 class Page < ApplicationRecord
   # default scope
-  # default_scope -> { eager_load(:sections) }
+
+  # attributes
+  attr_accessor :remove_image
 
   # constants
   LAYOUT = [%w[default default_layout], %w[profile profile_layout]].freeze
@@ -37,6 +39,7 @@ class Page < ApplicationRecord
 
   # callbacks
   before_save :set_slug
+  after_save :purge_image
 
   # aasm state
   aasm do
@@ -64,5 +67,11 @@ class Page < ApplicationRecord
 
   def page_class?
     type.nil?
+  end
+
+  def purge_image
+    sections.each do |section|
+      section.image.purge if section.remove_image.present?
+    end
   end
 end

@@ -27,4 +27,10 @@ class Section < Page
                                         allow_destroy: true
 
   # instance methods
+
+  def purge_image
+    cards.each do |card|
+      card.image.purge if card.remove_image.present?
+    end
+  end
 end
