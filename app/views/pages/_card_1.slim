@@ -2,7 +2,8 @@
   .row.no-gutters
     .col-md-4
       - if card.image.present?
-        = image_tag card.image
+        - cache card.image do
+          = image_tag card.image
     .col-md-8
       .card-body
         h5.card-title= card.title

@@ -15,11 +15,12 @@ class ApplicationController < ActionController::Base
 
   def navigable_pages
     @navigable_pages = Page.navigable.order(:position)
+    fresh_when @navigable_pages
   end
 
   def pundit_user
     Rack::MiniProfiler.authorize_request if current_account.try(:admin?)
-    current_account
+    fresh_when current_account
   end
 
   def after_sign_in_path_for(resource)

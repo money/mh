@@ -12,7 +12,9 @@ module ApplicationHelper
 
   def billboard_image
     if @page.image.try(:present?)
-      image_tag @page.image, class: 'd-block w-100 img-fluid'
+      cache @page.image do
+        image_tag @page.image, class: 'd-block w-100 img-fluid'
+      end
     else
       image_tag 'billboard-placeholder.png', class: 'd-block w-100 img-fluid'
     end
@@ -24,9 +26,11 @@ module ApplicationHelper
 
   def profile_image
     if profile.try(:image).try(:present?)
-      image_tag profile.image,
-                class: 'rounded-circle mx-auto therapist-image d-block',
-                size: '250x250'
+      cache profile.image do
+        image_tag profile.image,
+                  class: 'rounded-circle mx-auto therapist-image d-block',
+                  size: '250x250'
+      end
     else
       image_tag 'agupta-image.jpg',
                 class: 'rounded-circle therapist-image mx-auto d-block',

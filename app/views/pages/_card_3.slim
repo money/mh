@@ -5,7 +5,8 @@
             content: html_content(card.content) } do
 
     - if card.image.present?
-      = image_tag card.image, class: 'card-img-top'
+      - cache card.image do
+        = image_tag card.image, class: 'card-img-top'
     .align-self-center.col.text-center
       .mr-auto.ml-auto.lead.bg-white.font-weight-bold
         = card.title.match(/(?<=\[).+?(?=\])/).to_s

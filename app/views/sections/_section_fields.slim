@@ -3,7 +3,8 @@
   = f.label :_destroy, 'Remove', class: 'form-check-label'
 .form-group
   - if f.object.image.present?
-    = image_tag f.object.image, width: '15%'
+    - cache f.object.image do
+      = image_tag f.object.image, width: '15%'
   = f.file_field :image, class: 'form-control-file'
 .form-group
   = f.text_field :title, class: 'form-control',

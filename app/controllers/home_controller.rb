@@ -7,5 +7,6 @@ class HomeController < ApplicationController
 
   def show
     @page = Page.find_by(slug: 'home', type: nil)
+    fresh_when etag: @page, last_modified: @page.updated_at.utc
   end
 end

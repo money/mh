@@ -60,9 +60,8 @@ html
           #navbarNav.collapse.navbar-collapse
             ul.navbar-nav.nav-fill.w-100
               - @navigable_pages.each do |page|
-                - cache page do
-                  li.nav-item class=('active' if current_page?("/#{page.slug}"))
-                    = link_to page.title, page.slug, class: 'nav-link'
+                li.nav-item class=('active' if current_page?("/#{page.slug}"))
+                  = link_to page.title, page.slug, class: 'nav-link'
               li.nav-item
                 = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
                   class: 'btn btn-success text-white nav-link',
