@@ -1,6 +1,7 @@
 .col.mb-4
   .card.text-white.border-0.ml-auto.mr-auto.col-sm-10.col-md-12.col-lg-11.col-xl-8.p-0
-    = image_tag card.image, class: 'card-img'
+    - if card.image.present?
+      = image_tag card.image, class: 'card-img'
     .card-img-overlay.p-0
       .bg-transparent-50.pl-4.pr-4
         h1.card-title.text-center.font-weight-normal= card.title

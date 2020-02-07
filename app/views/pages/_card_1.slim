@@ -1,7 +1,8 @@
 .card.col-8.offset-2.bg-transparent.border-0.mb-3
   .row.no-gutters
     .col-md-4
-      = image_tag card.image
+      - if card.image.present?
+        = image_tag card.image
     .col-md-8
       .card-body
         h5.card-title= card.title
