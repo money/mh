@@ -11,9 +11,9 @@
   - cache section do
     .section.pt-4 class=cycle('bg-light', 'bg-white')
       - if account_signed_in? && current_account.admin?
-        .col-3.offset-9.text-right
+        .col-4.offset-8.text-right
           = link_to "edit section #{section.position}", edit_section_path(section.id, cards_size: section.cards.size),
-                     class: 'btn btn-success'
+                     class: 'btn btn-outline-success'
       - if section.title.present? || section.content.present?
         .col-md-10.offset-md-1.col-sm-12.m-auto
           .card-deck

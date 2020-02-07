@@ -35,28 +35,24 @@ html
       .col-12
         = render partial: 'shared/notification'
       - if account_signed_in? && current_account.admin?
-        .row
-          .col.align-items-start.mb-1
-            ul.list-group.list-group-horizontal
-              li.list-group-item
-                = link_to 'Learn Markdown',
-                  'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
-                  target: '_blank',
-                  class: 'text-info'
-              li.list-group-item
-                = link_to 'Image Resizer',
-                  'https://imageresizer.com',
-                  target: '_blank',
-                  class: 'text-info'
-          .align-items-end.mr-3.mb-1
-            ul.list-group.list-group-horizontal
-              li.list-group-item= link_to 'pages', :pages
-              li.list-group-item= link_to 'add page', [:new, :page]
-              = yield :controls
-              li.list-group-item= link_to 'sign out', destroy_account_session_path,
-                                  method: :delete
+        ul.nav.justify-content-center
+          li.nav-item
+            = link_to 'Learn Markdown',
+              'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables',
+              target: '_blank',
+              class: 'text-info nav-link'
+          li.nav-item
+            = link_to 'Image Resizer',
+              'https://imageresizer.com',
+              target: '_blank',
+              class: 'text-info nav-link'
+          li.nav-item= link_to 'pages', :pages, class: 'nav-link'
+          li.nav-item= link_to 'add page', [:new, :page], class: 'nav-link'
+          = yield :controls
+          li.nav-item= link_to 'sign out', destroy_account_session_path,
+                              method: :delete, class: 'nav-link text-danger'
       - if !current_page?(root_path) && @navigable_pages.present?
-        nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom.row
+        nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom
           button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
             span.navbar-toggler-icon
           #navbarNav.collapse.navbar-collapse
