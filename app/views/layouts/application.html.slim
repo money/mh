@@ -10,18 +10,20 @@ html
 
   body class="container-lg #{@page.try(:slug)}"
     .container-content.shadow-lg.bg-white
-      .row
-        div.col-6
+      .row.col.pr-0
+        div.col-4.pl-1
           / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
           /   = image_tag "facebook-logo.png", class: 'p-2'
           = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
             = image_tag "instagram-logo.png", class: 'p-2'
           = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
             = image_tag "twitter-logo.png", class: 'p-2'
-        div.col-6.text-right.pt-2
-          = link_to 'New Client', '/new_client', class: 'btn btn-secondary mr-2'
-          = link_to 'Portal login', 'https://myndheal.clientsecure.me',
-            class: 'btn btn-secondary', target: '_blank'
+        div.col-8.text-right.pt-2.pr-0
+          ul.nav.pull-right.justify-content-end
+            li.nav-item.mr-2= link_to 'New Client', '/new_client', class: 'btn btn-secondary'
+            li.nav-item= link_to 'Portal login', 'https://myndheal.clientsecure.me',
+              class: 'btn btn-secondary', target: '_blank'
+
       .row.position-relative.myndheal-logo
         .col.text-center
           = link_to_unless current_page?(root_path),
