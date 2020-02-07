@@ -11,7 +11,7 @@
   - cache section do
     .section.pt-4 class=cycle('bg-light', 'bg-white')
       - if account_signed_in? && current_account.admin?
-        .col-4.offset-8.text-right
+        .col-4.offset-8.text-right.mb-2
           = link_to "edit section #{section.position}", edit_section_path(section.id, cards_size: section.cards.size),
                      class: 'btn btn-outline-success'
       - if section.title.present? || section.content.present?

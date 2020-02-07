@@ -28,7 +28,7 @@
       - cache section do
         .col-10.mt-3.h5.font-weight-light.therapist-bio
           - if account_signed_in? && current_account.admin?
-            .col-4.offset-8.text-right
+            .col-4.offset-8.text-right.mb-2
               = link_to "edit section #{section.position}",
                          edit_section_path(section.id, cards_size: section.cards.size),
                          class: 'btn btn-outline-success'
