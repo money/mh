@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def pundit_user
     Rack::MiniProfiler.authorize_request if current_account.try(:admin?)
-    fresh_when current_account
+    current_account
   end
 
   def after_sign_in_path_for(resource)
