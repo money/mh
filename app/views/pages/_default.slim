@@ -21,6 +21,9 @@
               .card-body
                 h2.text-center.font-weight-normal= html_content(section.title)
                 h5.font-weight-light.col-10.offset-1= html_content(section.content)
+                - if current_account.try(:admin?)
+                  small.float-right
+                    em.text-secondary= section.updated_at.to_formatted_s(:short)
 
       - if section.cards.size == 3
         .col-12

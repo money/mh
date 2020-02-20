@@ -10,3 +10,7 @@
     .align-self-center.col.text-center
       .mr-auto.ml-auto.lead.bg-white.font-weight-bold
         = card.title.match(/(?<=\[).+?(?=\])/).to_s
+  - if current_account.try(:admin?)
+    .card-body
+      small.float-right
+        em.text-secondary= card.updated_at.to_formatted_s(:short)

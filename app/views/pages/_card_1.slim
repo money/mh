@@ -8,3 +8,6 @@
       .card-body
         h5.card-title= card.title
         p.card-text= html_content(card.content)
+        - if current_account.try(:admin?)
+          small.float-right
+            em.text-secondary= card.updated_at.to_formatted_s(:short)
