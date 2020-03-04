@@ -11,20 +11,23 @@
   .col-md-4.col-xs-12
     = profile_image
 
-    - @page.sections.any?
+    - first_section = @page.sections.first
+    - if first_section.present?
       - if account_signed_in? && current_account.admin?
         .text-center
-          = link_to "edit section #{@page.sections.first.position}",
-                    edit_section_path(@page.section_ids.first, cards_size: @page.sections.first.cards.size),
+          = link_to "edit section #{first_section.position}",
+                    edit_section_path(first_section.id, cards_size: first_section.cards.size),
                     class: 'btn btn-outline-success'
-      .mt-5
-        .display-4.text-center.font-weight-lighter.text-wrap
-          = @page.sections.first.title
-      .mt-5.col.text-center.lead
-        = html_content(@page.sections.first.content)
-      - if current_account.try(:admin?)
-        small.float-right
-          em.text-secondary= @page.sections.first.updated_at.to_formatted_s(:short)
+
+      - cache first_section do
+        .mt-5
+          .display-4.text-center.font-weight-lighter.text-wrap
+            = first_section.title
+        .mt-5.col.text-center.lead
+          = html_content(first_section.content)
+        - if current_account.try(:admin?)
+          small.float-right
+            em.text-secondary= first_section.updated_at.to_formatted_s(:short)
 
   .col-md-8.col-xs-12
     - @page.sections.drop(1).each do |section|
