@@ -54,7 +54,7 @@ html
           li.nav-item= link_to 'sign out', destroy_account_session_path,
                               method: :delete, class: 'nav-link text-danger'
       - if !current_page?(root_path) && @navigable_pages.present?
-        nav.navbar.navbar-expand-lg.navbar-light.border-top.border-bottom
+        nav.navbar.navbar-expand-md.navbar-light.border-top.border-bottom
           button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
             span.navbar-toggler-icon
           #navbarNav.collapse.navbar-collapse
