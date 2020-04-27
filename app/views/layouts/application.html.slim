@@ -12,12 +12,10 @@ html
     .container-content.shadow-lg.bg-white
       .row.col.pr-0
         div.col-4.pl-1
-          / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
-          /   = image_tag "facebook-logo.png", class: 'p-2'
-          = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
-            = image_tag "instagram-logo.png", class: 'p-2'
-          = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
-            = image_tag "twitter-logo.png", class: 'p-2'
+          / <!-- Professional verification provided by Psychology Today -->
+          a.sx-verified-seal href="https://www.psychologytoday.com/profile/750733"
+          <script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="11" data-id="750733" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy9bQkFER0VdL3Byb2ZpbGUvW1BST0ZJTEVfSURdP2NhbGxiYWNrPXN4Y2FsbGJhY2s="></script>
+          / <!-- End Verification -->
         div.col-8.text-right.pt-2.pr-0
           ul.nav.pull-right.justify-content-end
             li.nav-item.mr-2= link_to 'New Client', '/new_client', class: 'btn btn-secondary'
@@ -105,3 +103,10 @@ html
                   li
                     | (916) 400-0633
                   li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
+                  / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
+                    = image_tag "facebook-logo.png", class: 'p-2'
+                  li
+                    = link_to 'https://www.instagram.com/myndheal/', target: '_blank' do
+                      = image_tag "instagram-logo.png", class: 'p-2'
+                    = link_to 'https://twitter.com/MyndHeal', target: '_blank' do
+                      = image_tag "twitter-logo.png", class: 'p-2'
