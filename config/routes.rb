@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :accounts
+  resources :accounts
   root to: 'home#show'
   resources :pages, param: :slug do
     resources :sections
