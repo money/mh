@@ -16,17 +16,6 @@ module.exports = function(api) {
   }
 
   return {
-    configureWebpack: {
-      performance: {
-        hints: false
-      },
-      optimization: {
-        splitChunks: {
-          minSize: 10000,
-          maxSize: 250000,
-        }
-      }
-    },
     presets: [
       isTestEnv && [
         '@babel/preset-env',
