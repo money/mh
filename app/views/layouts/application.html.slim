@@ -101,7 +101,13 @@ html
                 h5.card-title MyndHeal
                 ul.list-unstyled
                   li
-                    | (916) 400-0633
+                    span.pr-1 Phone:
+                    span
+                      | (916) 400-0633
+                  li
+                    span.pr-1 Fax:
+                    span
+                      | (323) 238-3996
                   li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
                   / = link_to 'https://www.facebook.com/myndheal/', target: '_blank' do
                     = image_tag "facebook-logo.png", class: 'p-2'
