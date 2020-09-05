@@ -1,3 +1,18 @@
-= content_for :controls do
+- content_for :head do
+  / facebook open graph
+  meta property="og:type" content="website"
+  meta property="og:site_name" content='MyndHeal'
+  meta property="og:url" content=request.url
+  meta property="og:title" content="Therapist | Ajita Gupta"
+  meta property="og:description" content=@page.content.to_s.truncate(150, omission: '...(continue)')
+
+  / twitter card tags
+  meta content="summary_large_image" name="twitter:card" /
+  meta name="twitter:domain" value="MyndHeal.com" /
+  meta name="twitter:title" value="Therapist | Ajita Gupta" /
+  meta name="twitter:url" value=request.url /
+  meta name="twitter:description" value=@page.content.to_s.truncate(150, omission: '...(continue)')
+
+- content_for :controls do
   li.nav-item= link_to 'add section', [:new, @page, :section], class: 'nav-link'
 = render partial: @page.layout
