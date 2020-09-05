@@ -7,17 +7,8 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-<<<<<<< Updated upstream
-    meta property="og:url" content=root_url
-    meta property="og:type" content="website"
-    meta property="og:title" content="A Web Based Psychotherapy Company"
-    meta property="og:description" content="MyndHeal provides web based counseling for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss."
-    meta property="og:site_name" content='MyndHeal'
-    meta property="og:image" content=image_path('myndheal-logo.png')
-=======
     = yield :head
     meta property="description" content="MyndHeal provides web based counseling for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss."
->>>>>>> Stashed changes
 
   body class="container-lg #{@page.try(:slug)}"
     .container-content.shadow-lg.bg-white

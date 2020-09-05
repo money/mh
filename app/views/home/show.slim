@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 - content_for :head do
   / facebook open graph
   meta property="og:type" content="website"
@@ -17,7 +15,6 @@
   meta name="twitter:description" value="MyndHeal provides web based counseling for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss."
   meta name="twitter:image" content=image_url('myndheal-logo-with-bg.jpeg') /
 
->>>>>>> Stashed changes
 - if @page.present?
   - cache @page do
     = render partial: "pages/#{@page.layout}"
