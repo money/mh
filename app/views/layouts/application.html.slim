@@ -7,6 +7,11 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    meta property="url" content=root_url
+    meta property="title" content="A Web Based Psychotherapy Company"
+    meta property="description" content="MyndHeal provides web based counseling for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss."
+    meta property="site_name" content='MyndHeal'
+    meta property="image" content=image_url('myndheal-logo.png')
 
   body class="container-lg #{@page.try(:slug)}"
     .container-content.shadow-lg.bg-white
