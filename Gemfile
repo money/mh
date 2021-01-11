@@ -16,7 +16,7 @@ gem 'puma', '~> 3.12'
 gem 'pundit', '~> 2.1.0'
 gem 'rack-mini-profiler', '~> 1.1.3'
 gem 'rails', '~> 6.0.0'
-gem 'redcarpet', '~> 3.5.0'
+gem 'redcarpet', '~> 3.5.1'
 gem 'redis', '~> 4.1.3'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5'
