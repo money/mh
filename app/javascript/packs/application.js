@@ -3,8 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
+import "@hotwired/turbo-rails"
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
@@ -23,7 +22,7 @@ document.addEventListener("trix-file-accept", function(event) {
   event.preventDefault()
 })
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener("turbo:load", () => {
   $('[data-toggle="popover"]').popover({
     trigger: 'focus',
     template: '<div class="popover border-0 shadow bg-gradient-info" role="tooltip">' +
