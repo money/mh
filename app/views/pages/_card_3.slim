@@ -7,9 +7,9 @@
       - cache card.image do
         = image_tag card.image, class: 'card-img-top'
     - if card.title.present?
-      .align-self-center.col.text-center
+      .align-self-center.col.text-center.w-100
         .mx-auto.py-2.lead.bg-dark.text-white.font-weight-bold
-          = card.title
+          = html_content(card.title)
     - if current_account.try(:admin?)
       .card-body
         small.float-right
