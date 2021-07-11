@@ -1,7 +1,7 @@
 $enable-responsive-font-sizes: true
 $enable-gradients: true
 
-@import 'bootstrap'
+@import "bootstrap/scss/bootstrap"
 @import 'trix/dist/trix'
 @import './actiontext.scss'
 @import 'resources'
@@ -13,50 +13,23 @@ $enable-gradients: true
   .myndheal-logo-circle
     filter: drop-shadow(0 5px 1px rgba(0, 0, 0, .5))
 
-.card-deck
-  .align-self-center
-    margin-top: -20px
-    p
-      font-size: 1.5rem
-
 .height-25
   height: 25rem
 
 p
   line-height: 2rem !important
 
-.therapist-image
-  border: 10px solid #ccc
-  margin-top: -8rem
-
-.therapist-bio
-  border-left: 2px solid #ccc
-  margin-bottom: 0
-  li
-    line-height: 2rem
-  &::before
-    content: ' '
-    width: 15px
-    height: 15px
-    background-color: #ccc
-    border-radius: 50%
-    margin-left: -23px
-    display: inline-block
-    position: absolute
-
-.popover
-  max-width: 100vw
-  width: auto
-  h1
-    text-align: center
-  .arrow::after, .arrow::before
-    border-bottom-color: $info
-    border-top-color: $info
-
 .bg-transparent-50
   background-color: rgba(100, 100, 100, .7)
   min-height: 50%
   margin-top: 25%
+
+.card
+  &:focus
+    outline: none
+  a
+    &:focus
+      outline: none
 
 table
   @extend .table

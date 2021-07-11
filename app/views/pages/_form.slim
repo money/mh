@@ -1,5 +1,5 @@
 .row.mt-3
-  = form_for @page, html: { class: 'col-8 offset-2' } do |f|
+  = form_with model: @page, html: { class: 'col-8 offset-2', 'data-turbo' => 'false' } do |f|
     .form-group.row
       = f.collection_radio_buttons(:layout, Page::LAYOUT, :first, :last, checked: (@page.layout || 'default')) do |layout|
         .col-6.text-center.bg-gradient-dark.text-white.p-3

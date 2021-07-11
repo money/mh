@@ -1,16 +1,25 @@
-.card.border-0.bg-transparent
-  = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark', tabindex: '0',
-    data: { toggle: (card.content.present? ? 'popover' : ''),
-            placement: 'top', html: 'true',
-            content: html_content(card.content) } do
+.card.border-0.bg-transparent 
+  = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark', 
+    data: { bs_toggle: (card.content.present? ? 'offcanvas' : ''), bs_target: "#card-#{card.id}" }, 
+    aria: { controls: "offcanvasRight" } do
 
     - if card.image.present?
       - cache card.image do
         = image_tag card.image, class: 'card-img-top'
     .align-self-center.col.text-center
-      .mr-auto.ml-auto.lead.bg-white.font-weight-bold
+      .mx-auto.py-2.lead.bg-dark.text-white.font-weight-bold
         = card.title.match(/(?<=\[).+?(?=\])/).to_s
-  - if current_account.try(:admin?)
-    .card-body
-      small.float-right
-        em.text-secondary= card.updated_at.to_formatted_s(:short)
+    - if current_account.try(:admin?)
+      .card-body
+        small.float-right
+          em.text-secondary= card.updated_at.to_formatted_s(:short)
+
+.offcanvas.offcanvas-end tabindex="-1" id="card-#{card.id}"
+  .offcanvas-header
+    h5 = card.title
+    button.btn-close.text-reset.text-right type="button" data-bs-dismiss="offcanvas" aria-label="X"
+  .offcanvas-body
+    - if card.image.present?
+      - cache card.image do
+        = image_tag card.image, class: 'card-img-top'
+    p = html_content(card.content)

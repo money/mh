@@ -3,12 +3,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '2.7.1'
 
 gem 'aasm', '~> 5.0.6'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'bootstrap', '~> 4.4.1'
-gem 'devise', '~> 4.7.1'
+gem 'devise', '~> 4.8.0'
 gem 'jbuilder', '~> 2.7'
 gem 'passenger', '~> 6.0.4'
 gem 'pg', '~> 1.2.1'

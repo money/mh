@@ -1,4 +1,4 @@
 .col.mt-3
-  = form_for [@page, @section] do |f|
+  = form_with model: [@page, @section], html: { 'data-turbo' => 'false' } do |f|
     = render partial: 'sections/section_fields', locals: { f: f }
     = f.submit class: 'btn btn-primary'

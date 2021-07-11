@@ -16,7 +16,7 @@
                      class: 'btn btn-outline-success'
       - if section.title.present? || section.content.present?
         .col-md-10.offset-md-1.col-sm-12.m-auto
-          .card-deck
+          .card-group
             .card.border-0.bg-transparent
               .card-body
                 h2.text-center.font-weight-normal= html_content(section.title)
@@ -27,7 +27,7 @@
 
       - if section.cards.size == 3
         .col-12
-          .card-deck.accordion id="accordion-#{section.id}"
+          .card-group.accordion id="accordion-#{section.id}"
             = render partial: "pages/card_3", collection: section.cards,
                      as: :card, cached: true
       - if section.cards.size == 2

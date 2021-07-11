@@ -13,15 +13,15 @@ html
 
   body class="container-lg #{@page.try(:slug)}"
     .container-content.shadow-lg.bg-white
-      .row.col.pr-0
-        div.col-4.pl-1
+      .row.col.pe-3
+        div.col-4
           / <!-- Professional verification provided by Psychology Today -->
           a.sx-verified-seal href="https://www.psychologytoday.com/profile/750733"
           <script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="11" data-id="750733" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy9bQkFER0VdL3Byb2ZpbGUvW1BST0ZJTEVfSURdP2NhbGxiYWNrPXN4Y2FsbGJhY2s="></script>
           / <!-- End Verification -->
-        div.col-8.text-right.pt-2.pr-0
+        div.col-8.text-right.pt-2.pe-0
           ul.nav.pull-right.justify-content-end
-            li.nav-item.mr-2= link_to 'New Client', '/new_client', class: 'btn btn-secondary'
+            li.nav-item.me-2= link_to 'New Client', '/new_client', class: 'btn btn-secondary'
             li.nav-item= link_to 'Portal login', 'https://myndheal.clientsecure.me',
               class: 'btn btn-secondary', target: '_blank'
 
@@ -30,13 +30,12 @@ html
           = link_to_unless current_page?(root_path),
             image_tag('myndheal-logo-circle.png',
             class: 'position-absolute myndheal-logo-circle'), root_path
-          = image_tag 'myndheal-logo-name.png', class: 'mt-5 pt-4 ml-4'
+          = image_tag 'myndheal-logo-name.png', class: 'mt-5 pt-4 ms-4'
       .col.text-center
         p.lead.mb-0 A Web Based Psychotherapy Company
         p.lead Making Mental Health a Priority
 
       .col-12
-        = render partial: 'shared/notification'
       - if account_signed_in? && current_account.admin?
         ul.nav.justify-content-center
           li.nav-item
@@ -52,8 +51,9 @@ html
           li.nav-item= link_to 'pages', :pages, class: 'nav-link'
           li.nav-item= link_to 'add page', [:new, :page], class: 'nav-link'
           = yield :controls
-          li.nav-item= link_to 'sign out', destroy_account_session_path,
-                              method: :delete, class: 'nav-link text-danger'
+          li.nav-item= button_to 'sign out', destroy_account_session_path,
+                              form: { "data-turbo" => "false" },
+                              method: :delete, class: 'nav-link text-danger btn'
       - if !current_page?(root_path) && @navigable_pages.present?
         nav.navbar.navbar-expand-md.navbar-light.border-top.border-bottom
           button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
@@ -86,7 +86,7 @@ html
                   li= link_to 'Technical Requirements', '/technical_requirement',
                       class: 'text-dark'
                   li.pt-3
-                    span.mr-3
+                    span.me-3
                       = image_tag 'hipaa-logo.png', width: '80 p-2'
                     span
                       = image_tag 'ssl-logo.png', width: '80 p-2'
@@ -104,11 +104,11 @@ html
                 h5.card-title MyndHeal
                 ul.list-unstyled
                   li
-                    span.pr-1 Phone:
+                    span.pe-1 Phone:
                     span
                       | (916) 400-0633
                   li
-                    span.pr-1 Fax:
+                    span.pe-1 Fax:
                     span
                       | (323) 238-3996
                   li= mail_to 'info@myndheal.com', nil, class: 'text-dark'
