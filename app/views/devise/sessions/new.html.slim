@@ -1,7 +1,7 @@
 .col-6.offset-3.bg-light.shadow.p-3
   h2.text-center
     | Log in
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = form_for(resource, as: resource_name, html: {'data-turbo' => "false"}, url: session_path(resource_name)) do |f|
     .form-group
       = f.label :email
       br

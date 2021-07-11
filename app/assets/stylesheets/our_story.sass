@@ -1,6 +1,24 @@
 body
   &.our_story
     .profile
+      img.therapist-image
+        border: 10px solid #ccc
+        margin-top: -8rem
+        position: relative
+      .therapist-bio
+        border-left: 2px solid #ccc
+        margin-bottom: 0
+        li
+          line-height: 2rem
+        &::before
+          content: ' '
+          width: 15px
+          height: 15px
+          background-color: #ccc
+          border-radius: 50%
+          margin-left: -25px
+          display: inline-block
+          position: absolute
       table
         font-size: 1.1rem
         tr

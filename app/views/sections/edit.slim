@@ -12,8 +12,8 @@
             params: { cards_size: index },
             method: :get, class: 'btn btn-warning btn-lg btn-block'
     hr.col
-  = form_for @section, url: section_path(@section.id), method: :patch,
-                       html: { class: 'col-8 offset-2' } do |f|
+  = form_with model: @section, url: section_path(@section.id), method: :patch,
+    html: { class: 'col-8 offset-2', 'data-turbo' => "false" } do |f|
     = render partial: 'sections/section_fields', locals: { f: f }
     .form-group.row
       .col.cards.shadow

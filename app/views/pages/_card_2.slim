@@ -1,10 +1,10 @@
 .col.mb-4
-  .card.text-white.border-0.ml-auto.mr-auto.col-sm-10.col-md-12.col-lg-11.col-xl-8.p-0
+  .card.text-white.border-0.ms-auto.me-auto.col-sm-10.col-md-12.col-lg-11.col-xl-8.p-0
     - if card.image.present?
       - cache card.image do
         = image_tag card.image, class: 'card-img'
     .card-img-overlay.p-0
-      .bg-transparent-50.pl-4.pr-4
+      .bg-transparent-50.ps-4.pe-4
         h1.card-title.text-center.font-weight-normal= card.title
         .lead.card-text.font-weight-light= html_content(card.content)
     - if current_account.try(:admin?)
