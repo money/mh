@@ -24,14 +24,15 @@ p
   min-height: 50%
   margin-top: 25%
 
-.card
-  &:focus
-    outline: none
-  a
-    color: white
-    text-decoration: none
+.card-group
+  .card
     &:focus
       outline: none
+    a
+      color: white
+      text-decoration: none
+      &:focus
+        outline: none
 
 table
   @extend .table
