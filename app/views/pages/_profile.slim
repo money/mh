@@ -30,7 +30,7 @@
 
       - cache first_section do
         .mt-5
-          .display-4.text-center.font-weight-lighter.text-wrap
+          .display-4.text-center.fw-lighter.text-wrap
             = first_section.title
         .mt-5.col.text-center.lead
           = html_content(first_section.content)
@@ -41,13 +41,13 @@
   .col-md-8.col-xs-12
     - @page.sections.drop(1).each do |section|
       - cache section do
-        .col-10.mt-3.ps-3.h5.font-weight-light.therapist-bio
+        .col-10.mt-3.ps-3.h5.fw-light.therapist-bio
           - if account_signed_in? && current_account.admin?
             .col-4.offset-8.text-right.mb-2
               = link_to "edit section #{section.position}",
                          edit_section_path(section.id, cards_size: section.cards.size),
                          class: 'btn btn-outline-success'
-          h3.font-weight-light= section.title
+          h3.fw-light= section.title
           p= html_content(section.content)
           - if current_account.try(:admin?)
             small.float-right

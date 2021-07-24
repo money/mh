@@ -5,8 +5,8 @@
         = image_tag card.image, class: 'card-img'
     .card-img-overlay.p-0
       .bg-transparent-50.ps-4.pe-4
-        h1.card-title.text-center.font-weight-normal= card.title
-        .lead.card-text.font-weight-light= html_content(card.content)
+        h1.card-title.text-center.fw-normal= card.title
+        .lead.card-text.fw-light= html_content(card.content)
     - if current_account.try(:admin?)
       .card-body
         small.float-right
