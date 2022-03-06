@@ -24,6 +24,11 @@ gem 'sqlite3'
 gem 'webpacker', '~> 5.4.0'
 gem 'turbo-rails'
 
+# Temporary until update to rails 7
+gem 'net-smtp', require: false
+gem 'net-pop', require: false
+gem 'net-imap', require: false
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
