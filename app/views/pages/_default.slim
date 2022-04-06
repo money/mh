@@ -11,7 +11,7 @@
   - cache section do
     .section.pt-4 class=cycle('bg-light', 'bg-white')
       - if account_signed_in? && current_account.admin?
-        .col-4.offset-8.text-right.mb-2
+        .mb-2
           = link_to "edit section #{section.position}", edit_section_path(section.id, cards_size: section.cards.size),
                      class: 'btn btn-outline-success'
       - if section.title.present? || section.content.present?
@@ -25,12 +25,11 @@
                   em.text-secondary= section.updated_at.to_formatted_s(:short)
 
       - if section.cards.size == 3
-        .col-12
-          .card-group.accordion id="accordion-#{section.id}"
-            = render partial: "pages/card_3", collection: section.cards,
-                     as: :card, cached: true
+        .row.row-cols-1.row-cols-md-3
+          = render partial: "pages/card_3", collection: section.cards,
+                   as: :card, cached: true
       - if section.cards.size == 2
-        .row.row-cols-1.row-cols-lg-2
+        div.bg-transparent style="display: flex; justify-content: space-evenly;"
           = render partial: "pages/card_2", collection: section.cards,
                    as: :card, cached: true
       - if section.cards.size == 1

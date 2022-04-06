@@ -12,11 +12,11 @@
           = f.label :image, 'Upload image (1280px X 400px)'
         = f.file_field :image, class: 'form-control-file'
       .col-6.text-center
-        = image_tag 'page_layout.png', width: '50%'
+        = image_tag 'page_layout.png', style: "object-fit: cover; height 200px", class: "img-fluid"
       hr
         - if @page.image.present?
           - cache @page.image do
-            = image_tag @page.image, height: '200'
+            = image_tag @page.image, class: "img", style: "object-fit: cover; height 150px"
     .bg-light.p-3
       .form-group
         = f.label :position
@@ -43,9 +43,12 @@
                   .col-2.offset-10.text-right.p-0
                     = link_to 'edit cards', edit_section_path(sf.object.id, cards_size: sf.object.cards.size),
                       class: 'btn btn-outline-success'
-                  - sf.object.cards.each do |card|
-                    - if card.image.present?
-                      - cache card.image do
-                        = image_tag card.image
+                  .row.row-cols-1.row-cols-md-3.g-4.mt-1
+                    - sf.object.cards.each do |card|
+                      - if card.image.present?
+                        .col
+                          .card
+                            - cache card.image do
+                              = image_tag card.image, style: "object-fit: cover; height: 300px"
 
     = f.submit class: 'btn btn-primary'

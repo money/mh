@@ -11,8 +11,8 @@ html
     meta property="description" content="MyndHeal provides web based counseling for depression, anxiety, trauma, mental illness, domestic violence, substance abuse, grief and loss."
 
 
-  body class="container-lg #{@page.try(:slug)}"
-    .container-content.shadow-lg.bg-white
+  body class="container-fluid #{@page.try(:slug)}"
+    .container-content.bg-white
       .row.col.pe-3
         div.col-4
           / <!-- Professional verification provided by Psychology Today -->
@@ -21,9 +21,9 @@ html
           / <!-- End Verification -->
         div.col-8.text-right.pt-2.pe-0
           ul.nav.pull-right.justify-content-end
-            li.nav-item.me-2= link_to 'New Client', '/new_client', class: 'btn btn-secondary'
+            li.nav-item.me-2= link_to 'New Client', '/new_client', class: 'btn btn-outline-info'
             li.nav-item= link_to 'Portal login', 'https://myndheal.clientsecure.me',
-              class: 'btn btn-secondary', target: '_blank'
+              class: 'btn btn-outline-info', target: '_blank'
 
       .row.position-relative.myndheal-logo
         .col.text-center
@@ -65,7 +65,7 @@ html
                   = link_to page.title, page.slug, class: 'nav-link'
               li.nav-item
                 = link_to 'Request Appointment', 'https://myndheal.clientsecure.me',
-                  class: 'btn btn-success text-white nav-link',
+                  class: 'btn btn-outline-success text-success nav-link',
                   data: { spwidget_scope_id: 'd1857250-eabf-4ffd-af2b-3988e1390094',
                           spwidget_scope_uri: 'myndheal',
                           spwidget_application_id: '7c72cb9f9a9b913654bb89d6c7b4e71a77911b30192051da35384b4d0c6d505b',

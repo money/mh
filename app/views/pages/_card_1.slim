@@ -1,13 +1,13 @@
-.card.col-8.offset-2.bg-transparent.border-0.mb-3
-  .row.no-gutters
-    .col-md-4
-      - if card.image.present?
+.card.border-0.mb-3.bg-transparent
+  - if card.image.present?
+    .row.g-0
+      .col-md-4
         - cache card.image do
-          = image_tag card.image
-    .col-md-8
-      .card-body
-        h5.card-title= card.title
-        p.card-text= html_content(card.content)
-        - if current_account.try(:admin?)
-          small.float-right
-            em.text-secondary= card.updated_at.to_formatted_s(:short)
+          = image_tag card.image, class: "img-fluid rounded-start", style: "object-fit: cover; width: 400px"
+      .col-md-4
+        .card-body
+          h5.card-title= card.title
+          p.card-text= html_content(card.content)
+          - if current_account.try(:admin?)
+            small.float-right
+              em.text-secondary= card.updated_at.to_formatted_s(:short)

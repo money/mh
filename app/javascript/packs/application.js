@@ -9,6 +9,3 @@ import "controllers"
 document.addEventListener("trix-file-accept", function(event) {
   event.preventDefault()
 })
-
-document.addEventListener("turbo:load", function() {
-})

@@ -1,26 +1,27 @@
-.card.border-0.bg-transparent 
-  = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark', 
-    data: { bs_toggle: (card.content.present? ? 'offcanvas' : ''), bs_target: "#card-#{card.id}" }, 
-    aria: { controls: "offcanvasRight" } do
+.col id="accordion-#{card.id}"
+  .card.border-0.bg-transparent
+    = link_to card.title.match(/\/\w+/).to_s, class: 'text-dark',
+      data: { bs_toggle: (card.content.present? ? 'offcanvas' : ''), bs_target: "#card-#{card.id}" },
+      aria: { controls: "offcanvasRight" } do
 
-    - if card.image.present?
-      - cache card.image do
-        = image_tag card.image, class: 'card-img-top'
-    - if card.title.present?
-      .align-self-center.text-center.w-100
-        .mx-auto.lead.bg-dark.w-50.text-white.fw-bold
-          = html_content(card.title)
-    - if current_account.try(:admin?)
-      .card-body
-        small.float-right
-          em.text-secondary= card.updated_at.to_formatted_s(:short)
+      - if card.image.present?
+        - cache card.image do
+          = image_tag card.image, class: 'card-img-top img-fluid', style: "object-fit: cover; height: 300px;"
+      - if card.title.present?
+        .align-self-center.text-center.w-100
+          .mx-auto.lead.w-50
+            .plain-text= html_content(card.title)
+      - if current_account.try(:admin?)
+        .card-body
+          small.float-right
+            em.text-secondary= card.updated_at.to_formatted_s(:short)
 
-.offcanvas.offcanvas-end tabindex="-1" id="card-#{card.id}"
-  .offcanvas-header
-    h5 = card.title
-    button.btn-close.text-reset.text-right type="button" data-bs-dismiss="offcanvas" aria-label="X"
-  .offcanvas-body
-    - if card.image.present?
-      - cache card.image do
-        = image_tag card.image, class: 'card-img-top'
-    p = html_content(card.content)
+  .offcanvas.offcanvas-end tabindex="-1" id="card-#{card.id}"
+    .offcanvas-header
+      h5 = card.title
+      button.btn-close.text-reset.text-right type="button" data-bs-dismiss="offcanvas" aria-label="X"
+    .offcanvas-body
+      - if card.image.present?
+        - cache card.image do
+          = image_tag card.image, class: 'card-img-top'
+      p = html_content(card.content)

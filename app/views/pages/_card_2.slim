@@ -1,13 +1,10 @@
-.col.mb-4
-  .card.text-white.border-0.ms-auto.me-auto.col-sm-10.col-md-12.col-lg-11.col-xl-8.p-0
-    - if card.image.present?
-      - cache card.image do
-        = image_tag card.image, class: 'card-img'
-    .card-img-overlay.p-0
-      .bg-transparent-50.ps-4.pe-4
-        h1.card-title.text-center.fw-normal= card.title
-        .lead.card-text.fw-light= html_content(card.content)
+- if card.image.present?
+  div.plain-text style="width: 250px;"
+    - cache card.image do
+      = image_tag card.image, class: 'card-img', style: "object-fit: cover; height: 400px;"
+    h4.lead.text-center.fw-normal.mt-2= html_content(card.title)
+    .fw-light= html_content(card.content)
+
     - if current_account.try(:admin?)
-      .card-body
-        small.float-right
-          em.text-secondary= card.updated_at.to_formatted_s(:short)
+      small.float-right
+        em.text-secondary= card.updated_at.to_formatted_s(:short)

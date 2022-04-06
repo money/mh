@@ -6,5 +6,5 @@ tr
   td= page.aasm_state
   td
     .btn-group
-      = link_to 'edit', edit_page_path(page.slug), class: 'btn btn-info'
-      = link_to 'x', page, method: :delete, class: 'btn btn-danger'
+      = link_to 'edit', edit_page_path(page.slug), class: 'btn btn-outline-info'
+      = link_to 'x', page, method: :delete, class: 'btn btn-outline-danger text-danger'
